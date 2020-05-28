@@ -42,11 +42,12 @@ public class UserHelloController {
         }
         return "error";
     }
-
+    int count = 0;
     @GetMapping("/userHello2")
     public String userHello2() {
+        // 根据服务名获取服务，可能有多个实例
         List<ServiceInstance> list = discoveryClient.getInstances("provider");
-        ServiceInstance instance = list.get(0);
+        ServiceInstance instance = list.get((count++) % list.size());
         String host = instance.getHost();
         int port = instance.getPort();
         StringBuffer sb = new StringBuffer();
@@ -60,7 +61,7 @@ public class UserHelloController {
                 BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
                 String s = br.readLine();
                 br.close();
-                return s;
+                return host+":"+port+"/"+s;
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
