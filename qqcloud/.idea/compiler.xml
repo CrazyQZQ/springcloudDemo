@@ -6,14 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="qqcloud" />
         <module name="myeureka" />
+        <module name="consumer" />
+        <module name="qqcloud" />
+        <module name="provider" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="consumer" options="-parameters" />
       <module name="myeureka" options="-parameters" />
+      <module name="provider" options="-parameters" />
     </option>
   </component>
 </project>
