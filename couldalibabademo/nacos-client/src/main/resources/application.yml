@@ -1,0 +1,9 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: nacos-client
+  cloud:
+    nacos:
+      server-addr: 192.168.83.130:8848
+
